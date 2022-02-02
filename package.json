@@ -1,7 +1,8 @@
 {
-  "name": "homebridge-nexia-american-standard-thermostat-ts",
-  "version": "0.3.9",
-  "description": "Homebridge Nexia and American Standard plugin in Typescript",
+  "displayName": "Nexia & American Standard Thermostat with Zone Support",
+  "name": "homebridge-nexia-as-thermostat",
+  "version": "1.0.1",
+  "description": "Homebridge Nexia and American Standard plugin with support for multiple zones",
   "main": "dist/accessory.js",
   "scripts": {
     "clean": "rimraf ./dist",
@@ -17,7 +18,7 @@
     "ts-node": "^9.1.1",
     "typescript": "^3.8.3"
   },
-  "author": "@dugganb <dugganbmail@gmail.com>",
+  "author": "@djfraz",
   "engines": {
     "homebridge": ">=1.0.0"
   },
@@ -31,19 +32,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/DugganB/homebridge-nexia-american-standard-thermostat-ts.git"
+    "url": "git://github.com/DJFraz/homebridge_nexia_as_thermostat.git"
   },
   "bugs": {
-    "url": "https://github.com/DugganB/homebridge-nexia-american-standard-thermostat-ts/issues"
+    "url": "https://github.com/DJFraz/homebridge_nexia_as_thermostat/issues"
   },
   "devDependencies": {
     "@types/node": "10.17.19",
-    "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^7.20.0",
     "homebridge": "^1.0.4",
     "mocha": "^8.3.0",
     "rimraf": "^3.0.2"
   },
-  "homepage": "https://github.com/DugganB/homebridge-nexia-american-standard-thermostat-ts#readme"
+  "homepage": "https://github.com/DJFraz/homebridge_nexia_as_thermostat#readme"
 }

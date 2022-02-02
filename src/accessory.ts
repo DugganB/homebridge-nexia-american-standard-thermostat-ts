@@ -54,6 +54,7 @@ class NexiaThermostat {
   private readonly apiroute: string;
   private readonly houseId: string;
   private readonly thermostatIndex: number;
+  private readonly ZoneId: number;
   private readonly xMobileId: string;
   private readonly xApiKey: string;
   private readonly xAppVersion: string;
@@ -86,6 +87,7 @@ class NexiaThermostat {
     this.thermostatIndex = config.thermostatIndex;
     this.xMobileId = config.xMobileId;
     this.xApiKey = config.xApiKey;
+    this.ZoneId = config.ZoneId;
     this.xAppVersion = config.xAppVersion || "";
     this.xAssociatedBrand = config.xAssociatedBrand || "";
     
@@ -165,7 +167,7 @@ class NexiaThermostat {
   makeStatusRequest() {
     const promise = (async () => {
       const body = await this.gotapiGet("houses/" + this.houseId).json();
-      const rawData = body.result._links.child[0].data.items[this.thermostatIndex].zones[0];
+      const rawData = body.result._links.child[0].data.items[this.thermostatIndex].zones[this.ZoneId];
       return rawData;
     });
     return promise;

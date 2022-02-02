@@ -1,10 +1,8 @@
-# homebridge-nexia-american-standard-thermostat-ts
+# Nexia & American Standard Thermostat with Zone Support
 
-This repo is a from-scratch implementation of the Homebridge interface for Nexia and American Standard Thermostats.
+This repo is an implementation of the Homebridge interface for Nexia and American Standard Thermostats.
 
 Steps to get this working:
-
-**Note**: Props to [u/DOOManiac](https://www.reddit.com/user/DOOManiac/) for his posting his instructions on getting started. I shamelessly stole his instructions from [here](https://www.reddit.com/r/homebridge/comments/ecp58p/howto_connect_nexia_thermostat_to_homebridge/) and adapted to work with my plugin.
 
 ## 1. Install the plugin
 ## 2. Copy the configuration
@@ -14,7 +12,7 @@ You need another npm module, nexia-api, to manually connect to the MyNexia API a
 Open a terminal or SSH in to your server and install the npm module:
 $ sudo npm install -g @cdmnky/nexia-api
 (I did this and steps 5 & 6 in a Virtual Machine I was going to throw away, so I didn't care where it went. YMMV though.)
-## 4. Activate a new mobile device on MyNexia.com and get HouseId
+## 4. Activate a new mobile device on MyNexia.com or ASAirHome.com and get HouseId
 Homebridge uses the same API as Nexia's mobile apps, so to start using it we need to register a new "mobile" device on MyNexia.com. Open MyNexia.com and log in using the same credentials you used on your mobile app.
 On the left side, there is a picture of a house and an "Edit" button to edit your home.
 - Click Edit
@@ -51,15 +49,18 @@ If everything goes right, you'll see a simple JSON dump to your terminal window 
 
 ## 6. Update Homebridge Config
 Time to update the Homebridge config to replace the placeholders from step 2.
-"accessory" must be "NexiaThermostat"
-"name" can be anything, such as "Thermostat"
-"houseId" is the numeric houseId you got from Step 4
-"thermostatIndex" is 0 unless you have more than 1 of them in your house
-"xMobileId" is the Mobile Id you got in Step 5. Yes keep the x in front of the key name.
-"xApiKey" is the API Key you got in Step 5. Yes keep the x in front of the key name.
-"manufacturer", "model" and "serialNumber" can be anything.
+- "accessory" must be "NexiaThermostat".
+- "name" can be anything, such as "Thermostat".
+- "houseId" is the numeric houseId you got from Step 4.
+- "thermostatIndex" is 0 unless you have more than 1 primary thermostat in your home. 
+- "xMobileId" is the Mobile Id you got in Step 5. Yes keep the x in front of the key name.
+- "xApiKey" is the API Key you got in Step 5. Yes keep the x in front of the key name.
+- "manufacturer", "model" and "serialNumber" can be anything.
+- "ZoneId" will be the zone you want to control. If you only have one zone, leave this at 0.
+    - For each additional zone you want to control, create a new accessory with the same config values as the first, but increment "ZoneId" up 1 for each zone you want to control.
+    - Example: I have two zones, so Downstairs is `ZoneId: 0`. Add another accessory copying the config, and changing `name` and `ZoneId`. My upstairs zone would be `ZoneId: 1`.
 
-If you are on the new American Standard Home service, make sure you set "X-AppVersion" to the latest app version (`5.16.0` at the time of writing) and set "X-AssociatedBrand" to `asair` in your config.
+If you are on the new American Standard Home service, make sure you set "xAppVersion" to the latest app version (`6.1.0` at the time of writing) and set "xAssociatedBrand" to `asair` in your config.
 
 ## 7. Cleanup
 You can remove the nexia-api npm module and nexia.js once you have the Mobile ID and API keys.

@@ -1,12 +1,15 @@
 {
     "accessory": "NexiaThermostat",
     "name": "Downstairs",
-    "apiroute": "https://www.mynexia.com/mobile/",
-    "houseId": "555555",
+    "apiroute": "https://www.asairhome.com/mobile/",
     "thermostatIndex": 0,
+    "ZoneId": 0,
+    "xAppVersion": "6.1.0",
+    "xAssociatedBrand": "asair",
+    "houseId": "555555",
     "xMobileId": "111111",
     "xApiKey": "fffffffffffffffffffffffffffffffff",
-    "manufacturer": "Doesn't Matter",
-    "model": "Doesn't Matter",
-    "serialNumber": "Doesn't Matter"
+    "manufacturer": "Anything",
+    "model": "Anything",
+    "serialNumber": "Anything"
 }
